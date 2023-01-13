@@ -1,2 +1,2 @@
 # New_CP
-This Repo is for storing all the Problems I Practice and Participate in Competitive Programming Contests.
+This Repo is for storing all the Problems I Practice, and for Participating in Competitive Programming Contests regularly.
