@@ -308,8 +308,7 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
   
-    ll t;
-    cin >> t;
+    ll t=1;
     
     // here...
     // we might have to precompute using pre(); 
@@ -318,10 +317,31 @@ int main()
     {
         
         ll i,j,k;
-        
+        ll n;
+        cin >> n;
 
-
-
+        if(n%2==0)
+        {
+            cout << n/2 << endl;
+            j = n/2;
+            while(j--)
+            {
+                cout << 2 << " ";
+            }
+            cout << endl;
+        }
+        else
+        {
+            j = n-3;
+            cout << j/2 + 1 << endl;
+            j /= 2;
+            while(j--)
+            {
+                cout << 2 << " ";
+            }
+            cout << 3 << " ";
+            cout << endl;
+        }
 
 
 
