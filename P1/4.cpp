@@ -318,7 +318,10 @@ int main()
     {
         
         ll i,j,k;
-        
+        ll n;
+        cin >> n;
+
+        cout << n/2 << endl;
 
 
 
