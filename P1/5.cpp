@@ -318,10 +318,24 @@ int main()
     {
         
         ll i,j,k;   
-        
+        ll n;
+        cin >> n;
+        vll v;
+        ll c1=0,c2=0;
+        for(i=0;i<n;i++)
+        {
+            cin >> k;
+            v.pb(k);
+            if(k==1)
+                c1++;
+            else
+                c2++;
+        }
 
-
-
+        if((c1%2==0 and c2%2==0) or (c2%2==1 and c1%2==0 and c1 >= 2))
+            cout << "YES" << endl;
+        else
+            cout << "NO" << endl;
 
 
 
