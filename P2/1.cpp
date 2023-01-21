@@ -318,9 +318,22 @@ int main()
     {
         
         ll i,j,k;
+        string s;
+        cin >> s;
+        ll n = sz(s);
         
-
-
+        if((s[0] == 'a' and s[1] == 'a') or (s[0] == 'b' and s[1] =='b'))
+        {
+            cout << s[0] << " " << s[1] << " " << s.substr(2,n-2) << endl;
+        }
+        else if(s[0] == 'a' and s[1] == 'b')
+        {
+            cout << s[0] << " " << s.substr(1,n-2) << " " << s[n-1] << endl;
+        }
+        else
+        {
+            cout << s[0] << " " << s[1] << " " << s.substr(2,n-2) << endl;
+        }
 
 
 
