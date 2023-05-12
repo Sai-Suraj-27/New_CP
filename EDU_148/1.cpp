@@ -301,7 +301,13 @@ void remove(std::vector<T> &v, const T &target)
 
 
 
-
+int cntDistinct(string str){
+    map<char, int> count;
+    for(int i = 0; i < str.size(); i++){
+        count[str[i]]++;
+    }
+    return count.size();
+}
 
 
 
@@ -321,11 +327,56 @@ int main()
     while(t--)
     {
         
-        ll i,j,k;
+        ll i,j=0,k;
+        string s;
+        cin >> s;
+        if(sz(s)%2==0)
+        {
+            if(cntDistinct(s)==1)
+            {
+                cout << "NO" << endl;
+            }
+            else
+            {
+                cout << "YES" << endl;
+            }
+        }
+        else
+        {
+            if(cntDistinct(s)==1)
+            {
+                cout << "NO" << endl;
+            }
+            else if(cntDistinct(s)==2)
+            {
+                unordered_map<char,ll> mp;
+                for(i=0;i<sz(s);i++)
+                {
+                    mp[s[i]]++;
+                }
+                for(auto i:mp)
+                {
+                    if(i.second==1)
+                    {
+                        cout << "NO" << endl;
+                        j=1;
+                        break;
+                    }
+                }
+            }
+            if(j!=1 and cntDistinct(s) !=1)
+            {
+                cout << "YES" << endl;
+            }
+
+        }
         
 
 
 
+
+
+        
 
 
 
