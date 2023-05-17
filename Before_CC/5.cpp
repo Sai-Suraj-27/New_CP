@@ -322,7 +322,27 @@ int main()
     {
         
         ll i,j,k;
+        ll n;
+        cin >> n;
+        vll v;
+        vll v1;
+
+        for(i=0;i<n;i++)
+        {
+            cin >> k;
+            v.pb(k);
+        }
+        v1.pb(abs(v[0]-v[1]));
         
+        for(i=1;i<n-1;i++)
+        {
+            v1.pb(max(abs(v[i]-v[i-1]),abs(v[i]-v[i+1])));
+        }
+        v1.pb(abs(v[n-1]-v[n-2]));
+
+        cout << *min_element(all(v1)) << endl;
+
+
 
 
 
