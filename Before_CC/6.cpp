@@ -322,9 +322,36 @@ int main()
     {
         
         ll i,j,k;
+        ll n;
+        cin >> n;
         
+        string s;
+        cin >> s;
+        ll c0 = 0,c1=0;
 
-
+        for(i=0;i<n;i++)
+        {
+            if(s[i] == '0')
+            {
+                c0++;
+            }
+            else
+                c1++;
+        }
+        ll mini = min(c0,c1);
+        if(c0==0 or c1==0)
+        {
+            cout << "RAMOS" << endl;
+        }
+        else
+        {
+            if(mini%2==1)
+            {
+                cout << "ZLATAN" << endl;
+            }
+            else
+                cout << "RAMOS" << endl;
+        }
 
 
 
