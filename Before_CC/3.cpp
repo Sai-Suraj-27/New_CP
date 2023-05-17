@@ -322,7 +322,13 @@ int main()
     {
         
         ll i,j,k;
-        
+        ll x,y;
+        cin >> x >> y;
+
+        if(x*x == 2*y)
+            cout << "YES" << endl;
+        else    
+            cout << "NO" << endl;
 
 
 
