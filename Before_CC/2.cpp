@@ -205,19 +205,19 @@ vector<bool> primes()
 
 ll mod = 1e9 + 7;
 ll modu = 998244353;
-const int N = 2005;  // Based on max n in calculation of ncr (we can get it from the input range)
+const int N = 100000;  // Based on max n in calculation of ncr (we can get it from the input range)
 
-vector<long long>fact(N),inv(N),invfact(N);
+vector<long long>fact(N+1),inv(N),invfact(N);
 void pre()
 {
     inv[0]=inv[1]=fact[0]=invfact[0]=1;
     
     // Based on what mod we should use (as given in the problem) we can change here.
-    ll mod=modu;
+    //ll mod=modu;
     
-    for(ll i=2; i<N; i++)
+    for(ll i=2; i<=N; i++)
         inv[i]=mod-mod/i*inv[mod%i]%mod;
-    for(ll i=1; i<N; i++)
+    for(ll i=1; i<=N; i++)
     {
         fact[i]=fact[i-1]*i%mod;
         invfact[i]=invfact[i-1]*inv[i]%mod;
@@ -297,8 +297,22 @@ void remove(std::vector<T> &v, const T &target)
     v.erase(std::remove(v.begin(), v.end(), target), v.end());
 }
 
-
-
+// For problems where they ask p/q in the form of p.q^(-1) % mod;
+ll modinv(ll p,ll q)
+{
+    ll mod =1000000007,ex;
+    ex=mod-2;
+    while (ex)
+    {
+        if (ex & 1)
+        {
+            p = (p * q) % mod;
+        }
+        q = (q * q) % mod;
+        ex >>= 1;
+    }
+    return p;
+}
 
 
 
@@ -312,30 +326,40 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
   
-    ll t;
-    cin >> t;
+    ll n;
+    cin >> n;
     
     // here...
     // we might have to precompute using pre(); 
-
-    while(t--)
+    ll i,j,k;
+    vll v;
+    while(n--)
     {
-        
-        ll i,j,k;
-        
-
-
-
-
-
-
-
-
-
-
-        
-
+        ll xi,yi;
+        cin >> xi >> yi;
+        v.pb(xi);
     }
+
+    pre();
+    unordered_map<ll,ll> mp;
+    for(i=0;i<sz(v);i++)
+    {
+        mp[v[i]]++;
+    }
+
+    ll p,q;
+    n = sz(v);
+    q = fact[n];
+    p=1;
+    for(auto i:mp)
+    {
+        p = p*fact[i.second];
+        p = p%mod;
+    }
+    //cout << p << " " << q << endl;
+
+    cout << modinv(p,q) << endl;
+
 
 
     return 0;
