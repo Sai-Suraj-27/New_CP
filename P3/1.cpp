@@ -322,12 +322,31 @@ int main()
     {
         
         ll i,j,k;
+        ll n;
+        int d;
+        cin >> n >> d;
+        string s;
+        cin >> s;
+        j=0;
+        for(i=0;i<n;i++)
+        {
+            if(s[i] - '0' >= d or j==1)
+            {
+                cout << s[i];
+            }
+            else if(j==0)
+            {
+                cout << d;
+                i--;
+                j++;
+            }
+        }
+        if(j==0)
+        {
+            cout << d;
+        }
         
-
-
-
-
-
+        cout << endl;
 
 
 
