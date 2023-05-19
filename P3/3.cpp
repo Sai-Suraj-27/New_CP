@@ -332,8 +332,9 @@ int main()
            v.pb(k);
         }
 
-        
+        sort(all(v));
 
+        cout << max(v[0]*v[1],v[n-1]*v[n-2]) << endl;
 
 
 
