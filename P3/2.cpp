@@ -322,8 +322,41 @@ int main()
     {
         
         ll i,j,k;
-        
+        ll n,t;
+        cin >> n >> t;
 
+        vll v;
+        vll v1;
+
+        for(i=0;i<n;i++)
+        {
+            cin >> k;
+            v.pb(k);
+        }
+
+        for(i=0;i<n;i++)
+        {
+            cin >> k;
+            v1.pb(k);
+        }
+
+        ll ind = 0;
+        ll maxi = 0;
+        ll ans = -1;
+        for(i=0;i<n;i++)
+        {
+            if(v[i] <= t)
+            {
+                if(v1[i] > maxi)
+                {
+                    maxi = v1[i];
+                    ans = i+1;
+                }
+            }
+            t--;
+        }
+
+        cout << ans << endl;
 
 
 
