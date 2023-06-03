@@ -322,8 +322,17 @@ int main()
     {
         
         ll i,j,k;
-        
+        string s;
+        cin >> s;
 
+        if(equal(s.begin()+1,s.end(),s.begin()))
+        {
+            cout << -1 << endl;
+        }
+        else
+        {
+            cout << sz(s)-1 << endl;
+        }
 
 
 
