@@ -299,7 +299,26 @@ void remove(std::vector<T> &v, const T &target)
 
 
 
+ll subarray(vll arr, ll n)
+{
+ 
+    ll ans = 1, temp = 1;
+    for (ll i = 1; i < n; i++)
+    {
+        if (arr[i] == arr[i - 1])
+        {
+            ++temp;
+        }
+        else
+        {
+            ans = max(ans, temp);
+            temp = 1;
+        }
+    }
 
+    ans = max(ans, temp);
+    return ans;
+}
 
 
 
@@ -322,14 +341,23 @@ int main()
     {
         
         ll i,j,k;
-        
+        ll n;
+        cin >> n;
 
+        string s;
+        cin >> s;
+        vll v;
+        for(i=0;i<n;i++)
+        {
+            if(s[i] == '>')
+                v.pb(1);
+            else
+                v.pb(0);
+        }
 
+        ll ans1 = subarray(v,sz(v));
 
-
-
-
-
+        cout << ans1+1 << endl;
 
 
 
