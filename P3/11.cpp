@@ -1,9 +1,6 @@
 #include<bits/stdc++.h>
 #define sz(x) (int)x.size()
 #define all(x) (x).begin(), (x).end()
-#define allr(X) (X).rbegin(), (X).rend()
-#define F(i,a,n) for(ll i=a;i<n;i++)
-#define B(i,a,n) for(ll i=n-1;i>=a;i--)
 #define setbits(x)  __builtin_popcountll(x)
 #define zrobits(x)  __builtin_ctzll(x)
 #define ps(x,y)  fixed<<setprecision(y)<<x
@@ -20,9 +17,9 @@ const long double pi=3.141592653589793238462643383279502884197169399375105820974
 
 using namespace std;
 
-/* inline bool isPalindrome(const string& s) {
+inline bool isPalindrome(const string& s) {
     return equal(s.begin(), s.end(), s.rbegin());
-}*/
+}
 
 template<typename T>
 bool allEqual(std::vector<T> const &v) {
@@ -39,9 +36,10 @@ ll n_uniq(vector<ll> v)
 }
 
 // xor of a nber x with a nber with all 1's gives the nber with every bit of x flipped.
-ll bit_all_1 = 4294967295;
+ll all_bits_1 = 4294967295;
 
 
+// Returns a string;
 string multiply(string num1, string num2)
 {
     int len1 = num1.size();
@@ -93,7 +91,7 @@ string multiply(string num1, string num2)
     return s;
 }
 
-
+// Binary string to decimal number
 ll btd(string n)
 {
     ll dec_value = 0;
@@ -111,34 +109,6 @@ ll btd(string n)
     return dec_value;
 }
 
-// Short o(logn) code for btd
-// But this works only if input is in integer range;
-
-/*
-int btds(int n)
-{
-    int num = n;
-    int dec_value = 0;
- 
-    // Initializing base value to 1, i.e 2^0
-    int base = 1;
- 
-    int temp = num;
-    while (temp) {
-        int last_digit = temp % 10;
-        temp = temp / 10;
- 
-        dec_value += last_digit * base;
- 
-        base = base * 2;
-    }
- 
-    return dec_value;
-}
-*/
-
-
-
 
 // TO REMOVE ALL nS ALSO THEN USE "isalpha" instead of "isaln".
 // To apply this -> str.erase(it,str.end());
@@ -153,8 +123,6 @@ auto it = std::remove_if(str.begin(), str.end(), [](char const &c) {
 // if we want an element at "index" 'Z' to become 1st element after rotations we replace n-(k&n) with z;
 
 // vector<vll> v(n, vll(n));
-
-
 // sort with lambdas
 // sort(v.begin(), v.end(), [](int a, int b) { return abs(a)<abs(b); });
 
@@ -181,7 +149,7 @@ pair<ll,ll> fib(ll n)
 
 vector<bool> primes()
 {
-    // To find all the primes between 0 and M;
+    // To precompute all the primes between 0 and M;
     ll M = 100000;
     vector<bool> is_prime(M, true);
 
@@ -196,7 +164,6 @@ vector<bool> primes()
         }
     }
     return is_prime;
-
 }
 
 
@@ -233,9 +200,6 @@ long long ncr(long long n,long long r)
 }
 
 
-
-
-
 // Very large power very large number modulo...
 // This is also => binary Exponentiation with modulo (m)...
 // The module operator doesn't interfere with multiplications
@@ -244,7 +208,8 @@ long long ncr(long long n,long long r)
 ll long_power_long(ll x, ll n)
 {
     ll result = 1;
-    while (n) {
+    while (n)
+    {
         if (n & 1)
             result = result * x % mod;
         n = n / 2;
@@ -304,8 +269,6 @@ void remove(std::vector<T> &v, const T &target)
 
 
 
-
-
 int main()
 {
     // your code goes here.
@@ -322,7 +285,20 @@ int main()
     {
         
         ll i,j,k;
+        ll n;
+        cin >> n;
+        string s;
         
+        cin >> s;
+
+        vector<string> vs;
+        ll c = 0;
+        for(i=0;i<n-2;i++)
+        {
+            if(s[i] == s[i+2])
+                c++;
+        }
+        cout << n-1-c << endl;
 
 
 
