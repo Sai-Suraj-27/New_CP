@@ -110,7 +110,7 @@ ll btd(string n)
 }
 
 
-// TO REMOVE ALL nS ALSO THEN USE "isalpha" instead of "isaln".
+// qTO REMOVE ALL nS ALSO THEN USE "isalpha" instead of "isaln".
 // To apply this -> str.erase(it,str.end());
 
 /*
@@ -123,6 +123,7 @@ auto it = std::remove_if(str.begin(), str.end(), [](char const &c) {
 // if we want an element at "index" 'Z' to become 1st element after rotations we replace n-(k&n) with z;
 
 // vector<vll> v(n, vll(n));
+// s.erase(unique(all(s)),s.end()); to remove duplicates from string s.
 // sort with lambdas
 // sort(v.begin(), v.end(), [](int a, int b) { return abs(a)<abs(b); });
 
@@ -285,24 +286,26 @@ int main()
     {
         
         ll i,j,k;
-        string s;
-        cin >> s;
-        ll c = 0;
-        for(i=0;i<sz(s)-1;i++)
+        ll a,b;
+        cin >> a >> b;
+
+        if(__gcd(a,b) == 1)
         {
-            if(s[i] == '_' and s[i+1] == '_')
-                c++;
+            cout << 1 << endl;
+            cout << a << " " << b << endl;
+        }
+        else
+        {
+            cout << 2 << endl;
+            cout << 1 << " " << b-1 << endl;
+            cout << a << " " << b << endl;
         }
 
-        if(s[0]=='_')
-            c++;
-        if(s[sz(s)-1]=='_')
-            c++;
-        
-        if(s == "^")
-            cout << 1 << endl;
-        else
-            cout << c << endl;
+
+
+
+
+
 
 
 

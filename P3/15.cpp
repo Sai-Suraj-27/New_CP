@@ -110,7 +110,7 @@ ll btd(string n)
 }
 
 
-// TO REMOVE ALL nS ALSO THEN USE "isalpha" instead of "isaln".
+// qTO REMOVE ALL nS ALSO THEN USE "isalpha" instead of "isaln".
 // To apply this -> str.erase(it,str.end());
 
 /*
@@ -123,6 +123,7 @@ auto it = std::remove_if(str.begin(), str.end(), [](char const &c) {
 // if we want an element at "index" 'Z' to become 1st element after rotations we replace n-(k&n) with z;
 
 // vector<vll> v(n, vll(n));
+// s.erase(unique(all(s)),s.end()); to remove duplicates from string s.
 // sort with lambdas
 // sort(v.begin(), v.end(), [](int a, int b) { return abs(a)<abs(b); });
 
@@ -262,7 +263,15 @@ void remove(std::vector<T> &v, const T &target)
     v.erase(std::remove(v.begin(), v.end(), target), v.end());
 }
 
+ll mex(vll v)
+{
+    set<int> b(all(v));
 
+    int result = 0;
+    while (b.count(result))
+        ++result;
+    return result;
+}
 
 
 
@@ -285,24 +294,66 @@ int main()
     {
         
         ll i,j,k;
-        string s;
-        cin >> s;
-        ll c = 0;
-        for(i=0;i<sz(s)-1;i++)
+        ll n;
+        cin >> n;
+        vll v;
+        
+        for(i=0;i<n;i++)
         {
-            if(s[i] == '_' and s[i+1] == '_')
-                c++;
+           cin >> k;
+           v.pb(k);
         }
 
-        if(s[0]=='_')
-            c++;
-        if(s[sz(s)-1]=='_')
-            c++;
+        ll mexi = mex(v);
         
-        if(s == "^")
-            cout << 1 << endl;
+        //cout << mex << endl;
+        //cout << mexi << endl;
+        if(count(all(v),mexi+1) == 0)
+        {
+            if(sz(v)<=mexi)
+            {
+                cout << "NO" << endl;
+            }
+            else
+                cout << "YES" << endl;
+        }
         else
-            cout << c << endl;
+        {
+            for(i=0;i<n;i++)
+            {
+                if(v[i] == mexi+1)
+                {
+                    j = i;
+                    break;
+                }
+            }
+            for(i=n-1;i>=0;i--)
+            {
+                if(v[i]==mexi+1)
+                {
+                    k = i;
+                    break;
+                }
+            }
+            for(i=j;i<=k;i++)
+            {
+                v[i] = mexi;
+            }
+            //for(auto i:v) cout << i << " ";
+            //cout << endl;
+            if(mex(v) == mexi+1)
+                cout << "YES" << endl;
+            else
+                cout << "NO" << endl;
+
+        }
+
+
+
+
+
+
+
 
 
 
