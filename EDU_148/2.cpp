@@ -34,6 +34,7 @@ ll n_uniq(vector<ll> v)
     sort(all(v));
     return distance(v.begin(),unique(v.begin(), v.end()));
 }
+// s.erase(unique(all(s)),s.end()); to remove duplicates from string s.
 
 // xor of a nber x with a nber with all 1's gives the nber with every bit of x flipped.
 ll all_bits_1 = 4294967295;
@@ -123,7 +124,6 @@ auto it = std::remove_if(str.begin(), str.end(), [](char const &c) {
 // if we want an element at "index" 'Z' to become 1st element after rotations we replace n-(k&n) with z;
 
 // vector<vll> v(n, vll(n));
-// s.erase(unique(all(s)),s.end()); to remove duplicates from string s.
 // sort with lambdas
 // sort(v.begin(), v.end(), [](int a, int b) { return abs(a)<abs(b); });
 
@@ -266,10 +266,6 @@ void remove(std::vector<T> &v, const T &target)
 
 
 
-
-
-
-
 int main()
 {
     // your code goes here.
@@ -286,30 +282,36 @@ int main()
     {
         
         ll i,j,k;
-        ll n,d;
-        cin >> n >> d;
+        ll n,p;
+        cin >> n >> p;
+        vll v;
+        vll v1(n+1);
+        ll sum = 0;
 
-        string s;
-        cin >> s;
-        string s1 = "";
-        bool flag = true;
         for(i=0;i<n;i++)
         {
-            //cout << s[i] - '0' << " " << d << " ";
-            if(s[i]-'0' < d and flag)
-            {
-                s1 += to_string(d);
-                flag = false;
-            }
-            s1 += s[i];
+           cin >> k;
+           v.pb(k);
         }
-        if(flag)
-        {
-            s1 += to_string(d);
-            flag = false;
-        }
-        cout << s1 << endl;
 
+        sort(all(v));
+
+        for(i=0;i<n;i++)
+        {
+            v1[i+1] = v[i] + v1[i];
+        }
+
+        //for(auto j:v1) cout << j << " ";
+        //cout << endl;
+
+        ll ans = 0;
+        for(i=0;i<=p;i++)
+        {
+            //cout << n-(p-i) << " " << 2*i << " ";
+            ans = max(ans, v1[n-(p-i)] - v1[2*i]);
+        }
+
+        cout << ans << endl;
 
 
 
